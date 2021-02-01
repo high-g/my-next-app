@@ -1,0 +1,12 @@
+.success {
+  color: green;
+}
+.error {
+  color: red;
+}
+.test {
+  color: blue;
+  .a {
+    color: yellow;
+  }
+}
