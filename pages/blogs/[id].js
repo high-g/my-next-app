@@ -9,6 +9,7 @@ const BlogId = ({ blog }) => {
           <div key={tag.id}></div>
         ))}
       </div>
+      <div dangerouslySetInnerHTML={{ __html: blog.body }}></div>
     </div>
   )
 }
@@ -21,22 +22,21 @@ export const getStaticPaths = async () => {
   const res = await fetch('https://nextjs-jamstack.microcms.io/api/v1/blogs', key)
   const repos = await res.json()
 
-  const paths = repos.contents.map((rep) => `/blogs/${repo.id}`)
+  const paths = repos.contents.map((repo) => `/blogs/${repo.id}`)
 
   return {
-    path,
+    paths,
     fallback: false,
   }
 }
 
-export const geeStaticProps = async (context) => {
+export const getStaticProps = async (context) => {
   const id = context.params.id
   const key = {
     headers: { 'X-API-KEY': process.env.API_KEY },
   }
 
-  const res = await fetch('https://nextjs-jamstack.microcms.io/api/v1/blogs', key)
-
+  const res = await fetch(`https://nextjs-jamstack.microcms.io/api/v1/blogs/${id}`, key)
   const blog = await res.json()
 
   return {
@@ -45,3 +45,5 @@ export const geeStaticProps = async (context) => {
     },
   }
 }
+
+export default BlogId
