@@ -3,47 +3,48 @@ import fetch from 'isomorphic-unfetch'
 const BlogId = ({ blog }) => {
   return (
     <div>
-      <h1>{blog.title}</h1>
+      aaaa
+      {/* <h1>{blog.title}</h1>
       <div>
         {blog.tags.map((tag) => (
           <div key={tag.id}></div>
         ))}
       </div>
-      <div dangerouslySetInnerHTML={{ __html: blog.body }}></div>
+      <div dangerouslySetInnerHTML={{ __html: blog.body }}></div> */}
     </div>
   )
 }
 
-export const getStaticPaths = async () => {
-  const key = {
-    headers: { 'X-API-KEY': process.env.API_KEY },
-  }
+// export const getStaticPaths = async () => {
+//   const key = {
+//     headers: { 'X-API-KEY': process.env.API_KEY },
+//   }
 
-  const res = await fetch('https://nextjs-jamstack.microcms.io/api/v1/blogs', key)
-  const repos = await res.json()
+//   const res = await fetch('https://nextjs-jamstack.microcms.io/api/v1/blogs', key)
+//   const repos = await res.json()
 
-  const paths = repos.contents.map((repo) => `/blogs/${repo.id}`)
+//   const paths = repos.contents.map((repo) => `/blogs/${repo.id}`)
 
-  return {
-    paths,
-    fallback: false,
-  }
-}
+//   return {
+//     paths,
+//     fallback: false,
+//   }
+// }
 
-export const getStaticProps = async (context) => {
-  const id = context.params.id
-  const key = {
-    headers: { 'X-API-KEY': process.env.API_KEY },
-  }
+// export const getStaticProps = async (context) => {
+//   const id = context.params.id
+//   const key = {
+//     headers: { 'X-API-KEY': process.env.API_KEY },
+//   }
 
-  const res = await fetch(`https://nextjs-jamstack.microcms.io/api/v1/blogs/${id}`, key)
-  const blog = await res.json()
+//   const res = await fetch(`https://nextjs-jamstack.microcms.io/api/v1/blogs/${id}`, key)
+//   const blog = await res.json()
 
-  return {
-    props: {
-      blog: blog,
-    },
-  }
-}
+//   return {
+//     props: {
+//       blog: blog,
+//     },
+//   }
+// }
 
-export default BlogId
+// export default BlogId
