@@ -12,6 +12,7 @@ module.exports = {
           ],
         ]
       : []),
+    'autoprefixer',
     'postcss-preset-env',
   ],
 }
